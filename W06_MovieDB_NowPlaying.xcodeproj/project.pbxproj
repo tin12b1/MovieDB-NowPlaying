@@ -15,6 +15,9 @@
 		74AFC3FB1EC6E7BA002E63FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74AFC3F91EC6E7BA002E63FC /* LaunchScreen.storyboard */; };
 		74AFC4061EC6E7BA002E63FC /* W06_MovieDB_NowPlayingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AFC4051EC6E7BA002E63FC /* W06_MovieDB_NowPlayingTests.swift */; };
 		74AFC4111EC6E7BA002E63FC /* W06_MovieDB_NowPlayingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AFC4101EC6E7BA002E63FC /* W06_MovieDB_NowPlayingUITests.swift */; };
+		74AFC4211EC6E80C002E63FC /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AFC4201EC6E80C002E63FC /* Movie.swift */; };
+		74AFC4231EC6ED20002E63FC /* MovieList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AFC4221EC6ED20002E63FC /* MovieList.swift */; };
+		74AFC4271EC6F352002E63FC /* MoviesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AFC4261EC6F352002E63FC /* MoviesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		74AFC40C1EC6E7BA002E63FC /* W06_MovieDB_NowPlayingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = W06_MovieDB_NowPlayingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		74AFC4101EC6E7BA002E63FC /* W06_MovieDB_NowPlayingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = W06_MovieDB_NowPlayingUITests.swift; sourceTree = "<group>"; };
 		74AFC4121EC6E7BA002E63FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		74AFC4201EC6E80C002E63FC /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		74AFC4221EC6ED20002E63FC /* MovieList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieList.swift; sourceTree = "<group>"; };
+		74AFC4261EC6F352002E63FC /* MoviesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +105,10 @@
 		74AFC3EC1EC6E7BA002E63FC /* W06_MovieDB_NowPlaying */ = {
 			isa = PBXGroup;
 			children = (
-				74AFC3ED1EC6E7BA002E63FC /* AppDelegate.swift */,
+				74AFC41E1EC6E7C3002E63FC /* Model */,
+				74AFC41F1EC6E7DF002E63FC /* Controller */,
 				74AFC3EF1EC6E7BA002E63FC /* ViewController.swift */,
+				74AFC3ED1EC6E7BA002E63FC /* AppDelegate.swift */,
 				74AFC3F11EC6E7BA002E63FC /* Main.storyboard */,
 				74AFC3F71EC6E7BA002E63FC /* Assets.xcassets */,
 				74AFC3F91EC6E7BA002E63FC /* LaunchScreen.storyboard */,
@@ -126,6 +134,23 @@
 				74AFC4121EC6E7BA002E63FC /* Info.plist */,
 			);
 			path = W06_MovieDB_NowPlayingUITests;
+			sourceTree = "<group>";
+		};
+		74AFC41E1EC6E7C3002E63FC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				74AFC4201EC6E80C002E63FC /* Movie.swift */,
+				74AFC4221EC6ED20002E63FC /* MovieList.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		74AFC41F1EC6E7DF002E63FC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				74AFC4261EC6F352002E63FC /* MoviesTableViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,8 +287,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74AFC4271EC6F352002E63FC /* MoviesTableViewController.swift in Sources */,
 				74AFC3F01EC6E7BA002E63FC /* ViewController.swift in Sources */,
 				74AFC3F61EC6E7BA002E63FC /* W06_MovieDB_NowPlaying.xcdatamodeld in Sources */,
+				74AFC4211EC6E80C002E63FC /* Movie.swift in Sources */,
+				74AFC4231EC6ED20002E63FC /* MovieList.swift in Sources */,
 				74AFC3EE1EC6E7BA002E63FC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
