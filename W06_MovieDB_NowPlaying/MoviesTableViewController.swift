@@ -23,8 +23,6 @@ class MoviesTableViewController: UITableViewController {
     
     var dataTask: URLSessionDataTask?
     
-    let API = "a6e765c7cd29c66cda27ce61d868bb7d"
-    
     var movies: [Movie] = {
         return MovieList.movies()
     }()
@@ -60,6 +58,17 @@ class MoviesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        let queue = OperationQueue()
+        queue.addOperation { () -> Void in
+            let img = Downloader.downloadImageWithURL("\(prefixImg)\(self.movies[indexPath.row].poster!)")
+            OperationQueue.main.addOperation({
+                self.movies[indexPath.row].image = img
+                cell.imageView?.image = img
+            })
+        }
+        
+        
         cell.textLabel?.text = movies[indexPath.row].title
         cell.detailTextLabel?.text = movies[indexPath.row].overview
         
@@ -141,10 +150,11 @@ class MoviesTableViewController: UITableViewController {
                                 for movieDictonary in array as! [AnyObject] {
                                     if let movieDictonary = movieDictonary as? [String: AnyObject], let title = movieDictonary["title"] as? String {
                                         // Parse the search result
+                                        let movie_id = movieDictonary["id"] as? Int
                                         let poster = movieDictonary["poster_path"] as? String
                                         let overview = movieDictonary["overview"] as? String
                                         let releaseDate = movieDictonary["release_date"] as? String
-                                        self.movies.append(Movie(title: title, poster: poster, overview: overview, releaseDate: releaseDate))
+                                        self.movies.append(Movie(id: movie_id, title: title, poster: poster, overview: overview, releaseDate: releaseDate, image: #imageLiteral(resourceName: "default")))
                                     } else {
                                         print("Not a dictionary")
                                     }
@@ -171,5 +181,35 @@ class MoviesTableViewController: UITableViewController {
         dataTask?.resume()
     }
 
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            switch identifier {
+            case "show detail":
+                let movieDetailVC = segue.destination as! MovieDetailViewController
+                if let indexPath = self.tableView.indexPathForSelectedRow {
+                    movieDetailVC.id = idAtIndexPath(indexPath: indexPath as NSIndexPath)
+                    movieDetailVC.image = imageAtIndexPath(indexPath: indexPath as NSIndexPath)
+                }
+                break
+                
+            default:
+                break
+            }
+        }
+    }
+    
+    // MARK: - Helper Method
+    
+    func idAtIndexPath(indexPath: NSIndexPath) -> Int
+    {
+        return movies[indexPath.row].id!
+    }
+    
+    func imageAtIndexPath(indexPath: NSIndexPath) -> UIImage
+    {
+        return movies[indexPath.row].image!
+        
+    }
 
 }
