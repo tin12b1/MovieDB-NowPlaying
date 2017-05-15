@@ -47,15 +47,21 @@ class MovieDetailViewController: UIViewController {
                         detail = try JSONSerialization.jsonObject(with: Data!, options: .allowFragments) as! [String:Any]
                         DispatchQueue.main.async {
                             self.lblTitle.text = detail["title"]! as? String
-                            let day = (detail["release_date"]! as? String)!
-                            self.lblReleaseDate.text = "Release Date: \(day)"
-                            let vote = String(format: "%.1f" ,(detail["vote_average"] as? Double)!)
-                            self.lblVote.text = "⭐️ \(vote)"
-                            let budget = String(format: "%d" ,(detail["budget"]! as? Int)!)
-                            self.lblBudget.text = "Budget: \(budget)$"
-                            let revenue = String(format: "%d" ,(detail["revenue"]! as? Int)!)
-                            self.lblRevenue.text = "Revenue: \(revenue)$"
-                            self.lblOverview.text = detail["overview"]! as? String
+                            if let day = detail["release_date"] {
+                                self.lblReleaseDate.text = "Release Date: \(day)"
+                            }
+                            if let vote = detail["vote_average"] {
+                                self.lblVote.text = "⭐️ \(vote)"
+                            }
+                            if let budget = detail["budget"] {
+                                self.lblBudget.text = "Budget: \(budget)$"
+                            }
+                            if let revenue = detail["revenue"] {
+                                self.lblRevenue.text = "Revenue: \(revenue)$"
+                            }
+                            if let overview = detail["overview"] {
+                                self.lblOverview.text = "Overview: \(overview)"
+                            }
                         }
                     } catch let error as NSError {
                         print(error)

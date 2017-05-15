@@ -19,6 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="Uo6-sB-4zc">
+                            <rect key="frame" x="0.0" y="128" width="320" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </activityIndicatorView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="j4X-VZ-JFg" detailTextLabel="wjh-pD-tlw" rowHeight="100" style="IBUITableViewCellStyleSubtitle" id="o7Y-QV-mzi">
                                 <rect key="frame" x="0.0" y="28" width="320" height="100"/>
@@ -54,10 +58,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Now Playing Movies (TMDB)" id="W6B-Wh-aAd"/>
+                    <connections>
+                        <outlet property="spinner" destination="Uo6-sB-4zc" id="1gN-yH-hvb"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Du8-pz-buV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1148" y="93"/>
+            <point key="canvasLocation" x="1200" y="93"/>
         </scene>
         <!--Movie Detail View Controller-->
         <scene sceneID="Tpg-Sx-MOx">

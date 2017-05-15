@@ -17,6 +17,7 @@ class Downloader {
 }
 
 class MoviesTableViewController: UITableViewController {
+    @IBOutlet var spinner: UIActivityIndicatorView!
     
     let defaultSession = URLSession(configuration: URLSessionConfiguration.default)
     var dataTask: URLSessionDataTask?
@@ -24,10 +25,13 @@ class MoviesTableViewController: UITableViewController {
         return MovieList.movies()
     }()
     var queue = OperationQueue()
+    var loadingData = false
+    var refreshPage = 20
+    var p = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadMovie()
+        loadMovie(page: p)
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,11 +54,12 @@ class MoviesTableViewController: UITableViewController {
         
         cell.imageView?.image = #imageLiteral(resourceName: "default")
         queue.addOperation { () -> Void in
-            let img = Downloader.downloadImageWithURL("\(prefixImg)\(self.movies[indexPath.row].poster!)")
-            OperationQueue.main.addOperation({
-                self.movies[indexPath.row].image = img
-                cell.imageView?.image = img
-            })
+            if let img = Downloader.downloadImageWithURL("\(prefixImg)\(self.movies[indexPath.row].poster!)") {
+                OperationQueue.main.addOperation({
+                    self.movies[indexPath.row].image = img
+                    cell.imageView?.image = img
+                })
+            }
         }
         cell.textLabel?.text = movies[indexPath.row].title
         cell.detailTextLabel?.text = movies[indexPath.row].overview
@@ -62,14 +67,22 @@ class MoviesTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if !loadingData && indexPath.row == refreshPage - 1 {
+            spinner.startAnimating()
+            loadingData = true
+            loadMovie2(page: p)
+        }
+    }
+    
     // Hàm gửi yêu cầu lên trang The MovieDB để lấy dữ liệu các bộ phim đang chiếu về (Now Playing Movies)
-    func loadMovie() {
+    func loadMovie(page:Int) {
         if dataTask != nil {
             dataTask?.cancel()
         }
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        let url = NSURL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(API)&language=en-US&page=1")
+        let url = NSURL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(API)&language=en-US&page=\(page)")
         dataTask = defaultSession.dataTask(with: url! as URL) {
             data, response, error in
             
@@ -96,6 +109,67 @@ class MoviesTableViewController: UITableViewController {
                                         print("Not a dictionary")
                                     }
                                 }
+                                self.p += 1
+                            } else {
+                                print("Results key not found in dictionary")
+                            }
+                        } else {
+                            print("JSON Error")
+                        }
+                    } catch let error as NSError {
+                        print("Error parsing results: \(error.localizedDescription)")
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                        self.tableView.setContentOffset(CGPoint.zero, animated: false)
+                    }
+                    
+                }
+            }
+        }
+        
+        dataTask?.resume()
+    }
+    
+    func loadMovie2(page:Int) {
+        if dataTask != nil {
+            dataTask?.cancel()
+        }
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        let url = NSURL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(API)&language=en-US&page=\(page)")
+        dataTask = defaultSession.dataTask(with: url! as URL) {
+            data, response, error in
+            
+            DispatchQueue.main.async() {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+            
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let httpResponse = response as? HTTPURLResponse {
+                if httpResponse.statusCode == 200 {
+                    do {
+                        if let data = data, let response = try JSONSerialization.jsonObject(with: data, options:JSONSerialization.ReadingOptions(rawValue:0)) as? [String: AnyObject] {
+                            // Lấy các thông tin cần thiết từ mảng results được trang web trả về
+                            if let array: AnyObject = response["results"] {
+                                for movieDictonary in array as! [AnyObject] {
+                                    if let movieDictonary = movieDictonary as? [String: AnyObject], let title = movieDictonary["title"] as? String {
+                                        let movie_id = movieDictonary["id"] as? Int
+                                        let poster = movieDictonary["poster_path"] as? String
+                                        let overview = movieDictonary["overview"] as? String
+                                        let releaseDate = movieDictonary["release_date"] as? String
+                                        self.movies.append(Movie(id: movie_id, title: title, poster: poster, overview: overview, releaseDate: releaseDate, image: #imageLiteral(resourceName: "default")))
+                                    } else {
+                                        print("Not a dictionary")
+                                    }
+                                }
+                                self.refreshPage += 20
+                                self.tableView.reloadData()
+                                self.spinner.stopAnimating()
+                                self.loadingData = false
+                                self.p += 1
                             } else {
                                 print("Results key not found in dictionary")
                             }
