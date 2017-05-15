@@ -9,6 +9,7 @@
 import UIKit
 
 class MovieDetailViewController: UIViewController {
+    // Khai báo các label để hiển thị thông tin chi tiết của phim
     @IBOutlet var posterImg: UIImageView!
     @IBOutlet var lblTitle: UILabel!
     @IBOutlet var lblReleaseDate: UILabel!
@@ -25,28 +26,23 @@ class MovieDetailViewController: UIViewController {
         getMovieDetail()
         title = "Movie Detail"
         posterImg.image = image
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+    // Hàm lấy thông tin chi tiết phim từ trang The MovieDB
     func getMovieDetail() {
         if let movieId = id {
             let url = NSURL(string: "https://api.themoviedb.org/3/movie/\(movieId)?api_key=\(API)&language=en-US")
             var detail = [String:Any]()
             let request = NSMutableURLRequest(url: url! as URL, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 5)
-        
             request.httpMethod = "GET"
-        
             _ = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { (Data, URLResponse, Error) in
-            
                 if (Error != nil) {
                     print(Error!)
                 } else {
-                
                     do {
                         detail = try JSONSerialization.jsonObject(with: Data!, options: .allowFragments) as! [String:Any]
                         DispatchQueue.main.async {
