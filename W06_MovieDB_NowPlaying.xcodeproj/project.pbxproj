@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		40F51AFE1EC835660049B898 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F51AFD1EC835660049B898 /* MovieDetailViewController.swift */; };
-		40F51B001EC835DE0049B898 /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F51AFF1EC835DD0049B898 /* MovieDetail.swift */; };
 		40F51B021EC8456D0049B898 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F51B011EC8456D0049B898 /* Library.swift */; };
 		74AFC3EE1EC6E7BA002E63FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AFC3ED1EC6E7BA002E63FC /* AppDelegate.swift */; };
 		74AFC3F01EC6E7BA002E63FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AFC3EF1EC6E7BA002E63FC /* ViewController.swift */; };
@@ -42,7 +41,6 @@
 
 /* Begin PBXFileReference section */
 		40F51AFD1EC835660049B898 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
-		40F51AFF1EC835DD0049B898 /* MovieDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
 		40F51B011EC8456D0049B898 /* Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		74AFC3EA1EC6E7BA002E63FC /* W06_MovieDB_NowPlaying.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = W06_MovieDB_NowPlaying.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74AFC3ED1EC6E7BA002E63FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -146,7 +144,6 @@
 			children = (
 				74AFC4201EC6E80C002E63FC /* Movie.swift */,
 				74AFC4221EC6ED20002E63FC /* MovieList.swift */,
-				40F51AFF1EC835DD0049B898 /* MovieDetail.swift */,
 				40F51B011EC8456D0049B898 /* Library.swift */,
 			);
 			name = Model;
@@ -303,7 +300,6 @@
 				40F51AFE1EC835660049B898 /* MovieDetailViewController.swift in Sources */,
 				74AFC4231EC6ED20002E63FC /* MovieList.swift in Sources */,
 				74AFC3EE1EC6E7BA002E63FC /* AppDelegate.swift in Sources */,
-				40F51B001EC835DE0049B898 /* MovieDetail.swift in Sources */,
 				40F51B021EC8456D0049B898 /* Library.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
