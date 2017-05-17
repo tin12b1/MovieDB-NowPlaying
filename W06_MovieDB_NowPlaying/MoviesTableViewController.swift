@@ -198,7 +198,7 @@ class MoviesTableViewController: UITableViewController, UISearchBarDelegate, UIS
                     }
                     
                     DispatchQueue.main.async {
-                        self.tableView.reloadData()
+                        self.tableView.reloadSections(IndexSet(integersIn: 0...0), with: UITableViewRowAnimation.top)
                         self.tableView.setContentOffset(CGPoint.zero, animated: false)
                     }
                     

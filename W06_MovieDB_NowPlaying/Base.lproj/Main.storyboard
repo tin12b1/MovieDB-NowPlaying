@@ -14,8 +14,8 @@
         <scene sceneID="ZU7-HW-EUT">
             <objects>
                 <tableViewController id="t2W-36-Ixr" customClass="MoviesTableViewController" customModule="W06_MovieDB_NowPlaying" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="jpU-iM-u6K">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="jpU-iM-u6K">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -24,7 +24,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </activityIndicatorView>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" textLabel="j4X-VZ-JFg" detailTextLabel="wjh-pD-tlw" rowHeight="100" style="IBUITableViewCellStyleSubtitle" id="o7Y-QV-mzi">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="cell" textLabel="j4X-VZ-JFg" detailTextLabel="wjh-pD-tlw" rowHeight="100" style="IBUITableViewCellStyleSubtitle" id="o7Y-QV-mzi">
                                 <rect key="frame" x="0.0" y="28" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o7Y-QV-mzi" id="W0l-1b-Tav">
@@ -57,6 +57,7 @@
                             <outlet property="delegate" destination="t2W-36-Ixr" id="ZMG-sg-0o4"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Now Playing Movies (TMDB)" id="W6B-Wh-aAd"/>
                     <connections>
                         <outlet property="spinner" destination="Uo6-sB-4zc" id="1gN-yH-hvb"/>
