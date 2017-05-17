@@ -9,4 +9,4 @@
 import Foundation
 
 let API = "a6e765c7cd29c66cda27ce61d868bb7d"
-let prefixImg = "https://image.tmdb.org/t/p/w160"
+let prefixImg = "https://image.tmdb.org/t/p/w320"

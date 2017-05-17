@@ -18,7 +18,6 @@
 		74AFC4061EC6E7BA002E63FC /* W06_MovieDB_NowPlayingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AFC4051EC6E7BA002E63FC /* W06_MovieDB_NowPlayingTests.swift */; };
 		74AFC4111EC6E7BA002E63FC /* W06_MovieDB_NowPlayingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AFC4101EC6E7BA002E63FC /* W06_MovieDB_NowPlayingUITests.swift */; };
 		74AFC4211EC6E80C002E63FC /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AFC4201EC6E80C002E63FC /* Movie.swift */; };
-		74AFC4231EC6ED20002E63FC /* MovieList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AFC4221EC6ED20002E63FC /* MovieList.swift */; };
 		74AFC4271EC6F352002E63FC /* MoviesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AFC4261EC6F352002E63FC /* MoviesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,7 +56,6 @@
 		74AFC4101EC6E7BA002E63FC /* W06_MovieDB_NowPlayingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = W06_MovieDB_NowPlayingUITests.swift; sourceTree = "<group>"; };
 		74AFC4121EC6E7BA002E63FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		74AFC4201EC6E80C002E63FC /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
-		74AFC4221EC6ED20002E63FC /* MovieList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieList.swift; sourceTree = "<group>"; };
 		74AFC4261EC6F352002E63FC /* MoviesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,7 +141,6 @@
 			isa = PBXGroup;
 			children = (
 				74AFC4201EC6E80C002E63FC /* Movie.swift */,
-				74AFC4221EC6ED20002E63FC /* MovieList.swift */,
 				40F51B011EC8456D0049B898 /* Library.swift */,
 			);
 			name = Model;
@@ -298,7 +295,6 @@
 				74AFC3F61EC6E7BA002E63FC /* W06_MovieDB_NowPlaying.xcdatamodeld in Sources */,
 				74AFC4211EC6E80C002E63FC /* Movie.swift in Sources */,
 				40F51AFE1EC835660049B898 /* MovieDetailViewController.swift in Sources */,
-				74AFC4231EC6ED20002E63FC /* MovieList.swift in Sources */,
 				74AFC3EE1EC6E7BA002E63FC /* AppDelegate.swift in Sources */,
 				40F51B021EC8456D0049B898 /* Library.swift in Sources */,
 			);

@@ -21,9 +21,7 @@ class MoviesTableViewController: UITableViewController {
     
     let defaultSession = URLSession(configuration: URLSessionConfiguration.default)
     var dataTask: URLSessionDataTask?
-    var movies: [Movie] = {
-        return MovieList.movies()
-    }()
+    var movies = [Movie]()
     var queue = OperationQueue()
     var loadingData = false
     var refreshPage = 20
