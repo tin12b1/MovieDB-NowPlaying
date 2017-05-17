@@ -24,7 +24,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </activityIndicatorView>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="j4X-VZ-JFg" detailTextLabel="wjh-pD-tlw" rowHeight="100" style="IBUITableViewCellStyleSubtitle" id="o7Y-QV-mzi">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" textLabel="j4X-VZ-JFg" detailTextLabel="wjh-pD-tlw" rowHeight="100" style="IBUITableViewCellStyleSubtitle" id="o7Y-QV-mzi">
                                 <rect key="frame" x="0.0" y="28" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o7Y-QV-mzi" id="W0l-1b-Tav">
