@@ -89,7 +89,7 @@ class MoviesTableViewController: UITableViewController, UISearchBarDelegate, UIS
                 spinner.startAnimating()
                 loadingData = true
                 loadMovie(page: p)
-            }
+           }
         }
     }
     
@@ -127,12 +127,14 @@ class MoviesTableViewController: UITableViewController, UISearchBarDelegate, UIS
                                         print("Not a dictionary")
                                     }
                                 }
-                                self.refreshPage += 20
-                                self.tableView.reloadData()
-                                self.spinner.stopAnimating()
-                                self.spinner.isHidden = true
-                                self.loadingData = false
-                                self.p += 1
+                                DispatchQueue.main.async {
+                                    self.refreshPage += 20
+                                    self.tableView.reloadData()
+                                    self.spinner.stopAnimating()
+                                    self.spinner.isHidden = true
+                                    self.loadingData = false
+                                    self.p += 1
+                                }
                             } else {
                                 print("Results key not found in dictionary")
                             }
@@ -142,13 +144,6 @@ class MoviesTableViewController: UITableViewController, UISearchBarDelegate, UIS
                     } catch let error as NSError {
                         print("Error parsing results: \(error.localizedDescription)")
                     }
-                    
-                    DispatchQueue.main.async {
-                        // self.tableView.reloadData()
-                        self.tableView.reloadSections(IndexSet(integersIn: 0...0), with: UITableViewRowAnimation.top)
-                        self.tableView.setContentOffset(CGPoint.zero, animated: false)
-                    }
-                    
                 }
             }
         }
